@@ -1,20 +1,20 @@
 # Linux Basics
 ### Lesson 3: Linux File System Hierarchy
-/ is the root of the file system. Within it, you may have directories like /bin, /var, /usr, /home
-You can choose to mount one or more of these directories on separate disks using the mount command.
-/usr: All binaries are stored here under /bin (user commands) and /sbin (system commands)
-/boot: For booting. Often, based on your linux configuratoin, the /boot directory is on a separate disk.
-/dev: For devices. This directory provides access to hardware.
-/etc: For configuration files. Almost all of these files are text files and human readable.
-/home: For user home directories.
-/media and /mnt are used for mounts.
-/opt: For applications that has more than a couple of files. Example: A database
-/proc: Is an interface to the linux kernel. cpuinfo and meminfo, for example provide interfaces to the cpu and memory respectively.
-/run: A new temporary directory
-/srv: Is usually empty. It is used to store documents for services like web services or ftp services
-/sys: Hardware information
-/tmp: The old /run
-/var: For files dynamically created by the OS. Example /var/log for log files.
+/ is the root of the file system. Within it, you may have directories like /bin, /var, /usr, /home 
+You can choose to mount one or more of these directories on separate disks using the mount command.  
+`/usr`: All binaries are stored here under /bin (user commands) and /sbin (system commands).  
+/boot: For booting. Often, based on your linux configuratoin, the /boot directory is on a separate disk.  
+/dev: For devices. This directory provides access to hardware.  
+/etc: For configuration files. Almost all of these files are text files and human readable.  
+/home: For user home directories.  
+/media and /mnt are used for mounts.  
+/opt: For applications that has more than a couple of files. Example: A database  
+/proc: Is an interface to the linux kernel. cpuinfo and meminfo, for example provide interfaces to the cpu and memory respectively.  
+/run: A new temporary directory  
+/srv: Is usually empty. It is used to store documents for services like web services or ftp services  
+/sys: Hardware information  
+/tmp: The old /run  
+/var: For files dynamically created by the OS. Example /var/log for log files.  
 
 #### Wildcards
 * for everything
