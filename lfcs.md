@@ -121,6 +121,15 @@ root user (Off course!) and owner of the files can remove their own files.
 `T` refers to when the execute permissions are off.  
 `t` refers to when the execute permissions are on.  
 
+#### umask
+The *umask* is a shell setting that defines a mask that will be subtracted from the default permissions  
+Default permissions on directories are 777
+Default permissions on files are 666  
+* *umask 022* will set the default permissions on files to 644  
+* *umask 027* will set default permissions on directories to 750  
+
+#### Commands
+`chown, chgrp, chmod, umask`  
 
 ### Lesson 9: Storage Management Essentials
 Storage can be offered externally through SAN with protocols like iSCSI and Fiberchannel   
