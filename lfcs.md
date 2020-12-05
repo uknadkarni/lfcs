@@ -90,6 +90,36 @@ File to set user's defaults like home directory
 
 
 ### Lesson 8: Permission Management
+#### Ownership
+Use `chown` to change the user owner  
+Use `chgrp` to change the group owner  
+#### Mode
+`chmod` to change permissions on the file  
+`chmod` can be used in absolute mode (`chmod 770`) or in relative mode (`chmod u-w,g+w`)  
+`chown anna account` to change the user owner of the file/directory to anna  
+`chown anna:users account` to change the user and group ownership of the directory account to anna and users respectively.  
+
+#### Advanced Linux Permissions
+##### SUID
+`SUID`: It has a `chmod` value of 4. For files, it means "run as owner". For directories, it has no meaning.  
+`chmod 4770` to set the `SUID`  
+##### SGID
+`SGID`: Has a `chmod` value of 2. For files, it means "run as group owner". For directories, it means "inherit directory group owner"  
+– When a command or script with SUID bit set is run, its effective UID becomes that of the owner of the file, rather than of the user who is running it.  
+If a capital “S” appears in the owner’s execute field, it indicates that the setuid bit is on, and the execute bit “x” for the owner of the file is off or denied.  
+ If a lowercase letter “l” appears in the group’s execute field, it indicates that the setgid bit is on, and the execute bit for the group is off or denied.  
+###### SGID on a directory
+When SGID permission is set on a directory, files created in the directory belong to the group of which the directory is a member.  
+For example if a user having write permission in the directory creates a file there, that file is a member of the same group as the directory and not the user’s group.  
+This is very useful in creating shared directories.  
+##### Sticky Bit
+`Sticky Bit`: Has a `chmod` value of 1. For files, it has no meaning. For directories, it means "you can delete only if you are the owner of the directory or of the file you want to delete".  
+The sticky bit is primarily used on shared directories.  
+It is useful for shared directories such as `/var/tmp` and `/tmp` because users can create files, read and execute files owned by other users, but are not allowed to remove files owned by other users.  
+For example if user bob creates a file named `/tmp/bob`, other user tom can not delete this file even when the `/tmp` directory has permission of 777. If sticky bit is not set then tom can delete `/tmp/bob`, as the `/tmp/bob` file inherits the parent directory permissions.  
+root user (Off course!) and owner of the files can remove their own files.  
+`T` refers to when the execute permissions are off.  
+`t` refers to when the execute permissions are on.  
 
 
 ### Lesson 9: Storage Management Essentials
