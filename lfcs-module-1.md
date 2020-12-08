@@ -106,7 +106,7 @@ See `man 5 journald.conf`
 Note: Remember to create the directory `/var/log/journal` to store the journal persistently
 Use `systemctl force-reload systemd-journald` to reload the journal  
 
-## Lesson 8: GBasic Kernel Management
+## Lesson 8: Basic Kernel Management
 ### Working with kernel modules
 `lsmod` lists kernel modules that are currently loaded  
 `modinfo` provides more info about modules  
