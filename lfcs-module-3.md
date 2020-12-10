@@ -23,10 +23,6 @@ The sole purpose of extended partitions is to add logical partitions in it. Thin
 
 Use `fstrim` to trim the SSD. i.e discard unused blocks on a mounted filesystem.  
 
-Use `vmstat` to monitor swap and `free -m` to tell you if any swap is allocated.  
-On a healthy server, at least 30% should be available for buffers and cache (buff/cache).  
-
-`vmstat 2 10` and monitor si and so.  
 #### To create a Swap Partition
 Use `gdisk`  
 Instead of `mkfs`, use `mkswap /dev/sdb1`  
@@ -35,12 +31,21 @@ Activate swap with `swapon /dev/sdb1`
 The `/etc/fstab` entry will look like:  
 `/dev/sdb1     swap     swap     defaults    0 0`  
 
+Use `vmstat` to monitor swap and `free -m` to tell you if any swap is allocated.  
+On a healthy server, at least 30% should be available for buffers and cache (buff/cache).  
+
+`vmstat 2 10` and monitor si and so.  
 #### To create encrypted disks
 `cryptsetup luksFormat /dev/xvdc4`  
 `sudo cryptsetup luksOpen /dev/xvdc4 secret`  
 `sudo mkfs.ext4 /dev/mapper/secret`  
-`sudo mkdir /secret`  
+`sudo mkdir /mnt`  
+`mount /dev/mapper/secret /mnt`  
+`umount /mnt`  
+`cryptsetup luksClose secret`  
 
+
+To make this peristent:  
 The `/etc/fstab` entry contains `/dev/mapper/secret      /secret  ext4   defaults                0 0`  
 The `/etc/crypttab` entry contains `secret /dev/xvdc4`  
 
