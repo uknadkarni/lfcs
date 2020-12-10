@@ -14,9 +14,9 @@ There are two partitioning schemes:
 `mkfs` to create filesystems  
 `findmnt` to see where in the directory structure devices are mounted.  
 To mount a device `mount /dev/sdvb1 /data`
-`umount /dev/sdb1` to unmount
+`umount /dev/sdb1` to unmount  
 To make the mount persistent add to `/etc/fstab`
-`lsof` to list open files if umount fails
+`lsof` to list open files if umount fails  
 
 The sole purpose of extended partitions is to add logical partitions in it. Think of extended partitions as an empty box.  
 `fdisk` creates partitions on MBR and `gdisk` on GPT  
@@ -29,20 +29,20 @@ On a healthy server, at least 30% should be available for buffers and cache (buf
 `vmstat 2 10` and monitor si and so.  
 #### To create a Swap Partition
 Use `gdisk`  
-Instead of `mkfs`, use `mkswap /dev/sdb1` 
+Instead of `mkfs`, use `mkswap /dev/sdb1`  
 Activate swap with `swapon /dev/sdb1`  
   
 The `/etc/fstab` entry will look like:  
-`/dev/sdb1     swap     swap     defaults    0 0`
+`/dev/sdb1     swap     swap     defaults    0 0`  
 
 #### To create encrypted disks
-`cryptsetup luksFormat /dev/xvdc4`
-`sudo cryptsetup luksOpen /dev/xvdc4 secret`
-`sudo mkfs.ext4 /dev/mapper/secret`
-`sudo mkdir /secret`
+`cryptsetup luksFormat /dev/xvdc4`  
+`sudo cryptsetup luksOpen /dev/xvdc4 secret`  
+`sudo mkfs.ext4 /dev/mapper/secret`  
+`sudo mkdir /secret`  
 
 The `/etc/fstab` entry contains `/dev/mapper/secret      /secret  ext4   defaults                0 0`  
-The `/etc/crypttab` entry contains `secret /dev/xvdc4`
+The `/etc/crypttab` entry contains `secret /dev/xvdc4`  
 
 ## Lesson 11: Managing File Systems and Mounts
 ### Filesystems
@@ -57,7 +57,7 @@ To create many small files on disk, you may want to increase the number of inode
 `tune2fs -l /dev/sdb` to list all properties of the filesystem  
 
 To create labels  
-`tune2fs -L videos /dev/sdb`
+`tune2fs -L videos /dev/sdb`  
 
 #### XFS
 `xfs_admin`  
@@ -65,12 +65,12 @@ To create labels
 `xfs_repair`  
 
 To create labels  
-`xfs_admin -L books /dev/sdb`
+`xfs_admin -L books /dev/sdb`  
 
 
 
 ### Mounting filesystems
-Edit `/etc/fstab` and run `mount -a` 
+Edit `/etc/fstab` and run `mount -a`  
 
 
 
@@ -81,8 +81,8 @@ LVM: Logical Volume Manager
 
 ## Lesson 13: Managing Software RAID
 
-
 `cat /proc/mdstat`  
+Create two or more RAID paritions.  
 `sudo mdadm --create /dev/md0 --level=1 --raid-disks=2 /dev/xvdb /dev/xvd`  
 `sudo mkfs.ext4 /dev/md0`  
 Add to `/etc/fstab`  
@@ -119,3 +119,6 @@ This should create two files `/aquota.user` and `/aquota.group`
 
 Turn quota on with `sudo quotaon -v /`  
 
+Use `edquota` to set quota for specific users  
+
+Use `repquota -aug` to report quota usage  

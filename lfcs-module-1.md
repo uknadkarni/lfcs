@@ -33,7 +33,7 @@ Each line in limits.conf describes a limit for user/group in the form
 `<domain> <type> <item> <value>`  
 Where `domain` can be a user name, a group name, a wildcard (* for default entry), a wildcard % for group syntax  
 `type` can be hard/soft  
-`item` can be core, data, fsize, memlock, nofile, etc  
+`item` can be core, data, fsize, memlock, nofile, noproc, etc  
 
 `sudo less /etc/security/limits.conf` 
 

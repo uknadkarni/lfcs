@@ -28,3 +28,5 @@ Then run `systemctl daemon-reload` followed by `systemctl enable --now books.mou
 
 `systemctl list-unit-files`
 `systemctl list-unit-files | grep automount`
+
+`sudo -i`
